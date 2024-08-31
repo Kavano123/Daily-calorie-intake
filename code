@@ -1,0 +1,41 @@
+gender = input('Enter your gender: ').lower()
+weight = float(input('Enter your weight (kg): '))
+height = float(input('Enter your height (cm): '))
+age = int(input('Enter your age: '))
+activity = input("""
+How active are you? Choose from: 
+sedentary
+lightly
+moderately
+very active
+""").lower()
+
+bmr_male = 10 * weight + 6.25 * height - 5 * age + 5
+bmr_female = 10 * weight + 6.25 * height - 5 * age - 161
+
+if gender == 'male':
+    if activity == 'sedentary':
+        calories = bmr_male * 1.2
+    elif activity == 'lightly':
+        calories = bmr_male * 1.375
+    elif activity == 'moderately':
+        calories = bmr_male * 1.55
+    elif activity == 'very active':
+        calories = bmr_male * 1.725
+    else:
+        calories = bmr_male
+    print(f"Daily calorie intake: {calories:.2f} kcal")
+elif gender == 'female':
+    if activity == 'sedentary':
+        calories = bmr_female * 1.2
+    elif activity == 'lightly':
+        calories = bmr_female * 1.375
+    elif activity == 'moderately':
+        calories = bmr_female * 1.55
+    elif activity == 'very active':
+        calories = bmr_female * 1.725
+    else:
+        calories = bmr_female
+    print(f"Daily calorie intake: {calories:.2f} kcal")
+else:
+    print("Please enter a valid gender.")
